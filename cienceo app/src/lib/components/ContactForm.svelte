@@ -89,9 +89,9 @@
 						id="name"
 						type="text"
 						bind:value={formData.name}
-						class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors {{
-							errors.name ? 'border-red-500' : 'border-gray-300'
-						}}"
+						class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors {errors.name
+							? 'border-red-500'
+							: 'border-gray-300'}"
 						placeholder="Your full name"
 						required
 					/>
@@ -109,9 +109,9 @@
 						id="email"
 						type="email"
 						bind:value={formData.email}
-						class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors {{
-							errors.email ? 'border-red-500' : 'border-gray-300'
-						}}"
+						class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors {errors.email
+							? 'border-red-500'
+							: 'border-gray-300'}"
 						placeholder="your@email.com"
 						required
 					/>
@@ -144,9 +144,9 @@
 					id="message"
 					bind:value={formData.message}
 					rows="5"
-					class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors resize-none {{
-						errors.message ? 'border-red-500' : 'border-gray-300'
-					}}"
+					class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors resize-none {errors.message
+						? 'border-red-500'
+						: 'border-gray-300'}"
 					placeholder="Tell me about your challenges and how I can help..."
 					required
 				></textarea>

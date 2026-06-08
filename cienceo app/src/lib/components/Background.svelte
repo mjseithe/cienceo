@@ -23,7 +23,7 @@
 
 <section id="background" class="py-24 bg-white">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div bind:this={ref} class:opacity-100 class:{{ 'opacity-0': !isVisible }} class:transition class:duration-700>
+		<div bind:this={ref} class="transition duration-700 {isVisible ? 'opacity-100' : 'opacity-0'}">
 			<!-- Section Header -->
 			<div class="text-center mb-16">
 				<span class="inline-block px-4 py-1.5 bg-primary/10 text-primary text-sm font-semibold rounded-full mb-4">

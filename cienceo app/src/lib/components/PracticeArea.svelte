@@ -56,7 +56,7 @@
 
 <section id="practice-area" class="py-24 bg-gray-50">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div bind:this={ref} class:opacity-100 class:{{ 'opacity-0': !isVisible }} class:transition class:duration-700>
+		<div bind:this={ref} class="transition duration-700 {isVisible ? 'opacity-100' : 'opacity-0'}">
 			<!-- Section Header -->
 			<div class="text-center mb-16">
 				<span class="inline-block px-4 py-1.5 bg-primary/10 text-primary text-sm font-semibold rounded-full mb-4">
@@ -74,9 +74,9 @@
 			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 				{#each practiceAreas as area, index}
 					<div
-						class="bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-primary/20 group"
-						class:opacity-100 class:{{ 'opacity-0 translate-y-8': !isVisible }}
-						class:transition class:duration-700
+						class="bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-primary/20 group transition duration-700 {isVisible
+							? 'opacity-100'
+							: 'opacity-0 translate-y-8'}"
 						style="animation-delay: {index * 100}ms"
 					>
 						<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition-colors">

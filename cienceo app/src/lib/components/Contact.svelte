@@ -61,7 +61,7 @@
 				<div>
 					<h4 class="font-semibold text-gray-900 mb-4">Connect on LinkedIn</h4>
 					<a
-						href="https://linkedin.com"
+						href="https://www.linkedin.com/in/sikoradavid"
 						target="_blank"
 						rel="noopener noreferrer"
 						class="inline-flex items-center gap-2 px-6 py-3 bg-[#0077B5] text-white font-semibold rounded-lg hover:bg-[#005a87] transition-colors"

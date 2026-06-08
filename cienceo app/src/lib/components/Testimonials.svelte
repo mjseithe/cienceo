@@ -44,7 +44,7 @@
 
 <section id="testimonials" class="py-24 bg-white">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div bind:this={ref} class:opacity-100 class:{{ 'opacity-0': !isVisible }} class:transition class:duration-700>
+		<div bind:this={ref} class="transition duration-700 {isVisible ? 'opacity-100' : 'opacity-0'}">
 			<!-- Section Header -->
 			<div class="text-center mb-16">
 				<span class="inline-block px-4 py-1.5 bg-primary/10 text-primary text-sm font-semibold rounded-full mb-4">
@@ -62,9 +62,9 @@
 			<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 				{#each testimonials as testimonial, index}
 					<div
-						class="bg-gray-50 rounded-xl p-8 relative"
-						class:opacity-100 class:{{ 'opacity-0 translate-y-8': !isVisible }}
-						class:transition class:duration-700
+						class="bg-gray-50 rounded-xl p-8 relative transition duration-700 {isVisible
+							? 'opacity-100'
+							: 'opacity-0 translate-y-8'}"
 						style="animation-delay: {index * 150}ms"
 					>
 						<!-- Quote Icon -->

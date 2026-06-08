@@ -1,6 +1,5 @@
 import adapter from '@sveltejs/adapter-auto';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
-import tailwind from '@tailwindcss/vite';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -9,9 +8,6 @@ const config = {
 		runes: ({ filename }) => (filename.split(/[/\\]/).includes('node_modules') ? undefined : true)
 	},
 	preprocess: [vitePreprocess()],
-	vite: {
-		plugins: [tailwind()]
-	},
 	kit: {
 		// adapter-auto only supports some environments, see https://svelte.dev/docs/kit/adapter-auto for a list.
 		// If your environment is not supported, or you settled on a specific environment, switch out the adapter.

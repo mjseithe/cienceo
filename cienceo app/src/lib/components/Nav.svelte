@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { createEffect } from 'svelte';
+	import { onMount } from 'svelte';
 
 	const navItems = [
 		{ label: 'Home', href: '#home' },
@@ -28,9 +28,8 @@
 		closeMobileMenu();
 	}
 
-	// Track active section on scroll
 	function updateActiveSection() {
-		const sections = navItems.map(item => item.href.replace('#', ''));
+		const sections = navItems.map((item) => item.href.replace('#', ''));
 		const scrollPosition = window.scrollY + 100;
 
 		for (let i = sections.length - 1; i >= 0; i--) {
@@ -42,7 +41,7 @@
 		}
 	}
 
-	createEffect(() => {
+	onMount(() => {
 		window.addEventListener('scroll', updateActiveSection);
 		return () => window.removeEventListener('scroll', updateActiveSection);
 	});
@@ -53,7 +52,14 @@
 		<div class="flex items-center justify-between h-16">
 			<!-- Logo -->
 			<div class="flex-shrink-0">
-				<a href="#home" onclick={(e) => { e.preventDefault(); scrollToSection('home'); }} class="flex items-center gap-2">
+				<a
+					href="#home"
+					onclick={(e) => {
+						e.preventDefault();
+						scrollToSection('home');
+					}}
+					class="flex items-center gap-2"
+				>
 					<span class="text-2xl font-bold text-primary">Cien</span>
 					<span class="text-2xl font-bold text-accent">ceo</span>
 				</a>
@@ -62,20 +68,12 @@
 			<!-- Desktop Navigation -->
 			<div class="hidden md:flex items-center gap-1">
 				{#each navItems as item}
+					{@const sectionId = item.href.replace('#', '')}
 					<button
-						onclick={() => scrollToSection(item.href.replace('#', ''))}
-						class:px-4
-						class:py-2
-						class:rounded-md
-						class:text-sm
-						class:font-medium
-						class:transition-colors
-						class:duration-200
-						class:bg-primary={activeSection === item.href.replace('#', '')}
-						class:text-white={activeSection === item.href.replace('#', '')}
-						class:text-gray-700={activeSection !== item.href.replace('#', '')}
-						class:hover:text-primary={activeSection !== item.href.replace('#', '')}
-						class:hover:bg-gray-50={activeSection !== item.href.replace('#', '')}
+						onclick={() => scrollToSection(sectionId)}
+						class="px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 {activeSection === sectionId
+							? 'bg-primary text-white'
+							: 'text-gray-700 hover:text-primary hover:bg-gray-50'}"
 					>
 						{item.label}
 					</button>
@@ -105,47 +103,28 @@
 	</div>
 
 	<!-- Mobile Menu -->
+	<!-- svelte-ignore a11y_click_events_have_key_events -->
+	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<div
-		class:list={["fixed", "inset-0", "z-50", "md:hidden", {
-			'opacity-100 visible': mobileMenuOpen,
-			'opacity-0 invisible': !mobileMenuOpen
-		}]}
+		class="fixed inset-0 z-50 md:hidden {mobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}"
 		onclick={closeMobileMenu}
 	>
+		<!-- svelte-ignore a11y_click_events_have_key_events -->
+		<!-- svelte-ignore a11y_no_static_element_interactions -->
 		<div
-			class:fixed
-			class:right-0
-			class:top-0
-			class:bottom-0
-			class:w-64
-			class:bg-white
-			class:shadow-xl
-			class:p-4
-			class:transform
-			class:transition-transform
-			class:duration-300
-			class:ease-in-out
-			class:translate-x-0={mobileMenuOpen}
-			class:translate-x-full={!mobileMenuOpen}
+			class="fixed right-0 top-0 bottom-0 w-64 bg-white shadow-xl p-4 transform transition-transform duration-300 ease-in-out {mobileMenuOpen
+				? 'translate-x-0'
+				: 'translate-x-full'}"
 			onclick={(e) => e.stopPropagation()}
 		>
 			<div class="flex flex-col gap-1 mt-16">
 				{#each navItems as item}
+					{@const sectionId = item.href.replace('#', '')}
 					<button
-						onclick={() => scrollToSection(item.href.replace('#', ''))}
-						class:px-4
-						class:py-3
-						class:rounded-lg
-						class:text-base
-						class:font-medium
-						class:transition-all
-						class:duration-200
-						class:text-left
-						class:bg-primary={activeSection === item.href.replace('#', '')}
-						class:text-white={activeSection === item.href.replace('#', '')}
-						class:text-gray-700={activeSection !== item.href.replace('#', '')}
-						class:hover:bg-gray-100={activeSection !== item.href.replace('#', '')}
-						class:hover:text-primary={activeSection !== item.href.replace('#', '')}
+						onclick={() => scrollToSection(sectionId)}
+						class="px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 text-left {activeSection === sectionId
+							? 'bg-primary text-white'
+							: 'text-gray-700 hover:bg-gray-100 hover:text-primary'}"
 					>
 						{item.label}
 					</button>

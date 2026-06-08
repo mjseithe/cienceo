@@ -29,10 +29,11 @@
 	<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
 		<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 			<!-- Left Column - Text -->
-			<div class:animate-fade-in class:{{
-				'opacity-100 translate-y-0': isVisible,
-				'opacity-0 translate-y-10': !isVisible
-			}} class:transition class:duration-1000>
+			<div
+				class="animate-fade-in transition duration-1000 {isVisible
+					? 'opacity-100 translate-y-0'
+					: 'opacity-0 translate-y-10'}"
+			>
 				<div class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full mb-6 border border-white/20">
 					<span class="w-2 h-2 bg-accent rounded-full animate-pulse"></span>
 					<span class="text-white/90 text-sm font-medium">Available for new engagements</span>
@@ -41,9 +42,7 @@
 				<h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
 					Strategic Advisor
 					<br />
-					<span class="text-accent">to Technology</span>
-					<br />
-					CEOs
+					<span class="text-accent">to Technology and Fintech CEOs</span>
 				</h1>
 
 				<p class="text-xl text-gray-200 mb-8 leading-relaxed max-w-xl">
@@ -94,16 +93,17 @@
 			</div>
 
 			<!-- Right Column - Image/Visual -->
-			<div class:animate-fade-in class:{{
-				'opacity-100 translate-x-0': isVisible,
-				'opacity-0 translate-x-10': !isVisible
-			}} class:transition class:duration-1000 class:delay-200>
+			<div
+				class="animate-fade-in transition duration-1000 delay-200 {isVisible
+					? 'opacity-100 translate-x-0'
+					: 'opacity-0 translate-x-10'}"
+			>
 				<div class="relative">
 					<!-- Main Image Container -->
 					<div class="relative rounded-2xl overflow-hidden shadow-2xl">
 						<img
-							src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&h=750&fit=crop&crop=face"
-							alt="Professional portrait"
+							src="/david-sikora.jpg"
+							alt="David Sikora"
 							class="w-full h-auto object-cover"
 							loading="eager"
 						/>
